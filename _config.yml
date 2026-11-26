@@ -1,0 +1,6 @@
+# Jekyll only copies the site; these working files stay in the repo but are not served.
+exclude:
+  - PRODUCT.md
+  - DESIGN.md
+  - .impeccable
+  - _config.yml
