@@ -153,7 +153,17 @@
     buy.textContent = "Checkout opens soon";
   } else {
     if (PADDLE.environment === "sandbox") Paddle.Environment.set("sandbox");
-    Paddle.Initialize({ token: PADDLE.token });
+    Paddle.Initialize({
+      token: PADDLE.token,
+      eventCallback: (e) => {
+        if (e.name === "checkout.completed") {
+          note.innerHTML = "Thank you! Your GitHub account has been invited to <b>readygatedev/readygate-pro</b>. " +
+            "Accept the invite from your GitHub notifications or email, then install with " +
+            "<code>/plugin install readygate-pro --marketplace readygatedev/readygate-pro</code>. " +
+            "No invite within an hour? Email <a href=\"mailto:hello@readygate.dev\">hello@readygate.dev</a>.";
+        }
+      }
+    });
     buy.addEventListener("click", () => {
       const user = gh.value.trim().replace(/^@/, "");
       if (!/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/.test(user)) {
