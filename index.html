@@ -4,139 +4,335 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ReadyGate: tickets your developers can build</title>
-<meta name="description" content="ReadyGate is a Claude Code plugin for product managers: grounded fit checks, gated tickets with testable acceptance criteria, and (Pro) push to Jira, Linear or GitHub Issues, prototypes and dev review.">
+<meta name="description" content="ReadyGate is a Claude Code plugin for product managers. It checks your idea against the real codebase, asks only the questions you must answer, then writes tickets developers can build and QA can test.">
+<meta name="theme-color" content="#FBFCFC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#071417" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="site">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-push" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 4v16M4 10h6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-proto" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M7 10h6M7 13h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-grade" viewBox="0 0 24 24"><path d="M9 11l2.5 2.5L16 9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+</svg>
+
+<header class="site-head" id="top">
   <div class="wrap">
     <a class="brand" href="/"><img src="icon.png" alt="">ReadyGate</a>
-    <nav class="top">
+    <nav class="nav" aria-label="Main">
       <a href="#how" class="hide-sm">How it works</a>
+      <a href="#pro" class="hide-sm">Pro</a>
       <a href="#pricing">Pricing</a>
-      <a href="#faq" class="hide-sm">FAQ</a>
-      <a href="https://github.com/readygatedev/readygate">GitHub</a>
+      <a href="https://github.com/readygatedev/readygate" class="hide-sm">GitHub</a>
+      <a class="btn btn-primary" href="#pricing">Get Pro</a>
     </nav>
   </div>
 </header>
 
 <main>
-<div class="wrap hero">
-  <h1>Tickets your developers can build, without anyone guessing.</h1>
-  <p class="lede">ReadyGate is a Claude Code plugin for product managers. It reads your real codebase, tells you whether a feature fits, asks the product questions only you can answer, and only then writes tickets: user story, scope, business rules and Given/When/Then acceptance criteria QA can test.</p>
-  <div class="cta">
-    <a class="btn primary" href="#pricing">Get Pro, $49</a>
-    <a class="btn" href="https://github.com/readygatedev/readygate">Start free on GitHub</a>
-  </div>
-</div>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Tickets your developers can build, without anyone guessing</h1>
+      <p class="lede">ReadyGate is a Claude Code plugin that checks your idea against the real product, asks only what you must decide, then writes tickets developers can build and QA can test.</p>
+      <div class="actions">
+        <a class="btn btn-primary btn-lg" href="#pricing">Get Pro · $49</a>
+        <a class="btn btn-ghost btn-lg" href="https://github.com/readygatedev/readygate">Install free</a>
+      </div>
+      <p class="fine">
+        <span><svg aria-hidden="true"><use href="#i-check"/></svg>Free core, MIT licensed</span>
+        <span><svg aria-hidden="true"><use href="#i-check"/></svg>Pro is a one-time payment</span>
+        <span><svg aria-hidden="true"><use href="#i-check"/></svg>Your product code is never changed</span>
+      </p>
+    </div>
+    <div class="stage">
+      <figure class="window" aria-label="ReadyGate in Claude Code: a real run on the demo project, and the ticket it wrote">
+        <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span class="title">Claude Code · acme-shop demo</span></div>
+        <div class="panes">
+          <div class="term">
+            <p class="who">You</p>
+            <p class="cmd"><b>/pm-discover</b> Can Sellers see why a payout failed?</p>
+            <p class="who">ReadyGate</p>
+            <p>The Payout run doesn't check the Seller at all. Setting <span class="ref">status: "suspended"</span> doesn't stop their payouts (<span class="ref">sellers.ts:14-20</span>). So suspended Sellers are still being paid today.</p>
+            <p class="who">You</p>
+            <p class="cmd"><b>/pm-ticket</b> write it up</p>
+            <div class="hold">
+              <b>NO TICKETS YET · DECISION NEEDED</b>
+              Your answers create two decisions I can't make for you. "We will try again on &lt;next Monday&gt;" isn't true today: the weekly run only pays Pending payouts (<span class="ref">runPayouts.ts:7</span>), and nothing retries a Failed one automatically…
+            </div>
+            <p class="gap">(you answer the two decisions)</p>
+            <p class="who">You</p>
+            <p class="cmd"><b>generate</b></p>
+            <p class="ok"><svg aria-hidden="true" width="14" height="14" style="vertical-align:-2px"><use href="#i-check"/></svg> 5 tickets written to pm/tickets/payout-failure-reasons/</p>
+          </div>
+          <div class="ticket">
+            <div class="path">payout-failure-reasons-3.md <span class="tag">Ready for dev</span></div>
+            <p class="t-title">[Seller dashboard] Show Sellers why a payout failed</p>
+            <p class="t-label">Business rules</p>
+            <ul>
+              <li><span class="id">BR-01</span><span>Sellers see only the reason for the latest failed try, never earlier tries and never the bank's raw error message.</span></li>
+              <li><span class="id">BR-02</span><span>Once Staff press Retry, the Payout shows as a normal Pending Payout, with no reason.</span></li>
+            </ul>
+            <p class="t-label">Acceptance criteria</p>
+            <ul>
+              <li><span class="id">AC-01</span><span>Given a Failed Payout, when the Seller opens Payouts, then under "$&lt;amount&gt; · Failed" they see the plain reason and its next step, and no bank error text.</span></li>
+              <li><span class="id">AC-02</span><span>Given a Payout that failed twice for different reasons, when the Seller opens Payouts, then they see only the latest reason.</span></li>
+            </ul>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
 
-<section id="how">
-  <div class="wrap">
-    <h2>Gates, not guesses</h2>
-    <p class="sub">Most AI ticket writers fill gaps with plausible inventions. ReadyGate stops at each gap and hands the decision back to you.</p>
-    <div class="gates">
-      <div class="gate">
-        <h3>Grounded in your code</h3>
-        <p>Every claim about how the product works today cites a <code>file:line</code>. Your product repo stays read-only.</p>
-        <blockquote>Setting a seller to suspended doesn't stop their payouts. Suspended sellers are still being paid today.</blockquote>
+  <section class="block" id="how">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>From idea to tickets in three steps</h2>
+        <p>You type in plain English inside Claude Code, Anthropic's AI assistant. ReadyGate does the reading; you make the product calls. The replies below are from a real run on the demo project.</p>
       </div>
-      <div class="gate">
-        <h3>No ticket while a decision is open</h3>
-        <p>One round of product questions, then nothing is written until you say "generate".</p>
-        <blockquote>Your answer creates two decisions I can't make for you…</blockquote>
-      </div>
-      <div class="gate">
-        <h3>Respects past decisions</h3>
-        <p>A decisions file holds your team's standing rules. A feature that breaks one is flagged as blocked, with the reason.</p>
-      </div>
-      <div class="gate">
-        <h3>Testable by QA</h3>
-        <p>3 to 8 acceptance criteria per ticket, each proving a named business rule. Plain business language, no code in the ticket.</p>
-      </div>
-      <div class="gate">
-        <h3>No codebase yet? Fine.</h3>
-        <p>Greenfield mode turns your idea into a brief and an MVP backlog, with open questions split into "Before MVP" and "Can wait".</p>
+      <div class="steps">
+        <div class="step">
+          <span class="n">1</span>
+          <h3>Check the idea</h3>
+          <p>It reads your product and answers with a clear verdict: already exists, fits, fits with changes, doesn't fit, or blocked.</p>
+          <span class="cmdline">/pm-discover &lt;your idea&gt;</span>
+          <div class="glimpse"><b class="g-verdict">Fits, with changes.</b> Not today: the reason is saved when a payout fails, but no screen shows it to Sellers, and the text is a raw bank error that can't go on screen as it is.</div>
+        </div>
+        <div class="step">
+          <span class="n">2</span>
+          <h3>Answer what only you can</h3>
+          <p>One round of product questions about the gaps it found. If an answer contradicts how the product works today, it says so.</p>
+          <span class="cmdline">/pm-ticket &lt;feature&gt;</span>
+          <div class="glimpse">Before I write tickets for showing Sellers why a payout failed, I need five decisions from you.<br><span class="g-dim">Retry deletes the reason (<span class="g-ref">payouts.ts:18</span>), so if the payout fails again, the earlier reason is gone.</span></div>
+        </div>
+        <div class="step">
+          <span class="n">3</span>
+          <h3>Get the tickets</h3>
+          <p>When you say "generate": user story, scope, business rules, Given/When/Then acceptance criteria and dev notes.</p>
+          <span class="cmdline">generate</span>
+          <div class="glimpse g-files"><span class="g-dim">pm/tickets/payout-failure-reasons/</span>
+<span>-1.md</span> <span class="g-dim">[Task] Give every failed payout try a Seller-facing reason…</span>
+<span>-3.md</span> <span class="g-dim">[Seller dashboard] Show Sellers why a payout failed</span>
+<span>-5.md</span> <span class="g-dim">[Bug][Admin console] Record payout Retry in the Audit log…</span>
+<span class="g-dim">+ 2 more</span></div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="pricing">
-  <div class="wrap">
-    <h2>Pricing</h2>
-    <p class="sub">The free plugin is the whole ticket-writing workflow. Pro adds the rest of the PM loop, and hooks that enforce the gates.</p>
-    <div class="plans">
-      <div class="plan">
-        <h3>ReadyGate</h3>
-        <div class="price">Free <small>MIT license</small></div>
-        <ul>
-          <li><code>/pm-init</code>: detects your repos and sets up the workspace</li>
-          <li><code>/pm-discover</code>: fit check with a clear verdict</li>
-          <li><code>/pm-ticket</code>: gap analysis, questions, then tickets</li>
-          <li><code>/pm-new</code> and <code>/pm-backlog</code> for new products</li>
+  <section class="block" id="gates">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>It stops where other tools guess</h2>
+        <p>Most AI ticket writers fill gaps with plausible inventions. ReadyGate has gates instead. These are excerpts from real runs on the demo project.</p>
+      </div>
+      <div class="gates">
+        <article class="frag lead">
+          <header><h3>It finds the problem next to the one you asked about</h3><p>You asked about failed payouts. It read the payout run and found this.</p></header>
+          <div class="out"><p style="margin:0">The Payout run doesn't check the Seller at all. Setting <span class="ref">status: "suspended"</span> doesn't stop their payouts (<span class="ref">sellers.ts:14-20</span>). So suspended Sellers are still being paid today.</p></div>
+        </article>
+        <article class="frag">
+          <header><h3>It respects decisions your team already made</h3><p>Asked for an early payout, it checks your decisions file first.</p></header>
+          <div class="out"><b>Blocked.</b> <span class="ref">pm/DECISIONS.md</span> says the payout run is weekly, Monday 06:00 UTC, a Finance decision. An early payout changes exactly that.</div>
+        </article>
+        <article class="frag">
+          <header><h3>It keeps tickets testable</h3><p>Every criterion is something QA can check from the screen, including the states people forget.</p></header>
+          <div class="paper"><span class="id">AC-04</span><span>Given the Seller opens Payouts, when the page is loading, has no Payouts, or can't load, then they see a loading indicator, a "no payouts yet" message, or an error message with a way to try again.</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="paths">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>Works with or without code</h2>
+        <p>Your product repo stays read-only the whole time: no commits, no branches, no edits.</p>
+      </div>
+      <div class="paths">
+        <div class="path-col">
+          <header><h3>You have a product</h3><p>ReadyGate reads the code, so every claim cites the exact file and line.</p></header>
+          <ul class="cmds">
+            <li><code>/pm-init</code><span>Detects your repos and sets everything up, asking only what it can't find.</span></li>
+            <li><code>/pm-discover</code><span>A fit check with a verdict, or "how does this work today?" in plain language.</span></li>
+            <li><code>/pm-ticket</code><span>Gap analysis, one round of questions, then tickets.</span></li>
+          </ul>
+        </div>
+        <div class="path-col">
+          <header><h3>You have an idea</h3><p>No code yet: ReadyGate works from your product brief instead.</p></header>
+          <ul class="cmds">
+            <li><code>/pm-new</code><span>Turns your idea into a brief, asking only about what's missing. Never invents the product.</span></li>
+            <li><code>/pm-backlog</code><span>Splits the first version into features in build order, each ready or waiting on a named question.</span></li>
+            <li><code>/pm-ticket</code><span>The same gates, grounded in the brief. Technical unknowns go to your tech lead.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="pro">
+    <div class="wrap pro">
+      <div>
+        <div class="block-head">
+          <h2>Pro covers the rest of the loop</h2>
+          <p>Everything in the free plugin, plus pushing to your tracker, prototyping and reviewing what developers ship.</p>
+        </div>
+        <ul class="feat">
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-push"/></svg></span><div><h3>Push to your tracker</h3><p>Tickets go to Jira, Linear or GitHub Issues after a dry run you approve, with epics, links and screenshots. Nothing is pushed twice; edited tickets become updates.</p></div></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-board"/></svg></span><div><h3>See what needs attention</h3><p>A read-only board view, plus tickets that are out of sync with the tracker.</p></div></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-proto"/></svg></span><div><h3>Prototype the screens</h3><p>A mockup for your approval, then a mock-data UI and checked screenshots. What the screens decide becomes a proposed ticket change.</p></div></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-grade"/></svg></span><div><h3>Grade what was shipped</h3><p>After developers merge, a summary of what changed, graded A to D against each ticket's rules, with the code as evidence.</p></div></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><div><h3>Gates that are enforced</h3><p>Hooks keep the product repo read-only and block ticket or tracker writes until your own message says "generate" or "push".</p></div></li>
         </ul>
-        <a class="btn" href="https://github.com/readygatedev/readygate">Install from GitHub</a>
       </div>
-      <div class="plan pro">
-        <h3>ReadyGate Pro</h3>
-        <div class="price">$49 <small>one-time, per person</small></div>
-        <ul>
-          <li>Everything in the free plugin</li>
-          <li><code>/pm-push</code>: tickets to <b>Jira, Linear or GitHub Issues</b> after a dry run, with epics, links and screenshots, never pushed twice</li>
-          <li><code>/pm-board</code>: what needs attention, and tickets out of sync with the tracker</li>
-          <li><code>/pm-prototype</code>: mockup, mock-data UI, checked screenshots, ticket-change proposals</li>
-          <li><code>/pm-review</code>: grades what developers shipped, A to D, against each rule</li>
-          <li>Hooks that enforce the gates: read-only product repo, no tickets or tracker writes without your own "go"</li>
-          <li>Updates for 0.x and 1.x</li>
-        </ul>
-        <label class="gh" for="gh">Your GitHub username (Pro is delivered as access to a private repository)</label>
-        <input class="gh" id="gh" name="gh" autocomplete="username" placeholder="octocat" spellcheck="false">
-        <button class="btn primary" id="buy" type="button">Buy Pro, $49</button>
-        <p class="fine" id="buy-note">Secure checkout by Paddle, our reseller, which handles payment, VAT and sales tax. 14-day refund policy: <a href="/refunds">details</a>.</p>
+      <div class="pro-out">
+        <figure class="mini">
+          <figcaption><code>/pm-push</code> dry run</figcaption>
+          <div class="mini-body">
+            <p class="m-lead">Here's the plan. <b>Nothing has been written to GitHub yet.</b></p>
+            <table>
+              <thead><tr><th scope="col">Ticket</th><th scope="col">Action</th><th scope="col">Epic</th></tr></thead>
+              <tbody>
+                <tr><td>…-1.md</td><td><span class="m-tag">create</span> Task</td><td>new: "Payouts"</td></tr>
+                <tr><td>…-3.md</td><td><span class="m-tag">create</span> Story</td><td>new: "Payouts"</td></tr>
+              </tbody>
+            </table>
+            <p class="m-note">Ticket 3 depends on ticket 1, so its issue number goes into ticket 3's Dependencies line.</p>
+          </div>
+        </figure>
+        <figure class="mini">
+          <figcaption><code>/pm-board</code> needs attention</figcaption>
+          <div class="mini-body">
+            <p class="m-item"><b>#8 shows an old version of its ticket.</b> It was edited after it was pushed, so developers would be building from outdated text.</p>
+            <p class="m-item"><b>Tickets 2, 4 and 5 aren't on GitHub yet.</b></p>
+            <p class="m-note">Run <code>/pm-push payout-failure-reasons 3</code> to update #8.</p>
+          </div>
+        </figure>
+        <figure class="mini">
+          <figcaption><code>/pm-review</code> what shipped</figcaption>
+          <div class="mini-body">
+            <p class="m-item"><span class="m-grade m-warn">No ticket</span> Payouts over $5,000 are now skipped without any notice. This changes business logic and has no ticket.</p>
+            <p class="m-item"><span class="m-grade">C</span> Retries are now written to the Audit log. Staff can't see a "Retried by" line yet.</p>
+            <p class="m-note">All grades are from reading the code only.</p>
+          </div>
+        </figure>
+      </div>
+      <p class="pro-src">Excerpts from real Pro runs on the demo project, pushing to a test GitHub repository.</p>
+      <div class="trackers">
+        <table>
+          <thead><tr><th scope="col">Tracker</th><th scope="col">Connection</th><th scope="col">Screenshots</th></tr></thead>
+          <tbody>
+            <tr><td>Jira Cloud</td><td data-k="Connection">Atlassian's official connector, signed in with your account</td><td data-k="Screenshots">Attached automatically</td></tr>
+            <tr><td>Linear</td><td data-k="Connection">Linear's official connector, signed in with your account</td><td data-k="Screenshots">Attached automatically</td></tr>
+            <tr><td>GitHub Issues</td><td data-k="Connection">GitHub's command-line tool</td><td data-k="Screenshots">Via your browser, or listed for you</td></tr>
+          </tbody>
+        </table>
+        <p class="note">No API keys or passwords are ever written to your files.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <h2>Trackers</h2>
-    <div class="tablewrap">
-      <table>
-        <tr><th>Tracker</th><th>Connection</th><th>Screenshots</th></tr>
-        <tr><td>Jira Cloud</td><td>Atlassian's official MCP server (OAuth)</td><td>Attached automatically</td></tr>
-        <tr><td>Linear</td><td>Linear's official MCP server (OAuth)</td><td>Attached automatically</td></tr>
-        <tr><td>GitHub Issues</td><td>The <code>gh</code> CLI</td><td>Via the browser, or listed for you</td></tr>
-      </table>
+  <section class="block" id="pricing">
+    <div class="wrap">
+      <div class="block-head center">
+        <h2>Simple pricing</h2>
+        <p>Start free. Buy Pro once when you want the tracker, prototype and review steps.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <h3>ReadyGate</h3>
+          <div class="price">Free</div>
+          <p class="sub">Open source under the MIT license.</p>
+          <ul class="checks">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Fit checks with a clear verdict</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Gap analysis and one round of questions</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Tickets with testable acceptance criteria</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Brief and backlog for new products</span></li>
+          </ul>
+          <a class="btn btn-ghost btn-lg push" href="https://github.com/readygatedev/readygate">Install from GitHub</a>
+        </div>
+        <div class="plan pro-plan">
+          <h3>ReadyGate Pro <span class="pill">One-time</span></h3>
+          <div class="price">$49<small>per person</small></div>
+          <p class="sub">Everything in free, plus:</p>
+          <ul class="checks">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Push to Jira, Linear or GitHub Issues</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Board view and sync check</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Prototype loop with screenshots</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>A–D review of shipped work</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Enforced gates, updates for 0.x and 1.x</span></li>
+          </ul>
+          <div class="push">
+            <div class="field">
+              <label for="gh">Your GitHub username</label>
+              <div class="input-gh" id="gh-box"><span aria-hidden="true">@</span><input id="gh" name="gh" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="your-username" aria-describedby="buy-note"></div>
+            </div>
+            <button class="btn btn-primary btn-lg" id="buy" type="button">Buy Pro · $49</button>
+            <p class="buy-note" id="buy-note" aria-live="polite">Pro is delivered as access to a private GitHub repository. Secure checkout by Paddle, which handles payment and tax. <a href="/refunds">14-day refunds</a>.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="sub" style="margin-top:16px">No API tokens are ever written to your files.</p>
-  </div>
-</section>
+  </section>
 
-<section id="faq" class="faq">
+  <section class="block" id="faq">
+    <div class="wrap">
+      <div class="block-head center"><h2>Questions</h2></div>
+      <div class="faq">
+        <details><summary>I'm not technical. Can I use it?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. You talk to it in plain English inside Claude Code, Anthropic's AI assistant. Installing takes one command, and <code>/pm-init</code> sets up the rest by asking you a few questions.</p></details>
+        <details><summary>What do I need?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Claude Code (with a paid Claude plan or an API key), git and python3. For Pro screenshots: Chrome.</p></details>
+        <details><summary>What does it cost to run?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>It runs on your own Claude Code plan. On API pricing, a feature from idea to tickets typically costs $1–4.</p></details>
+        <details><summary>How do I get Pro after paying?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>The GitHub account you entered is invited to the private <code>readygatedev/readygate-pro</code> repository automatically. Accept the invite from your GitHub notifications or email, then install it with one command.</p></details>
+        <details><summary>Can I use it at work?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes. The license covers personal and commercial work, for employers and clients. One license per person using it. Everything it helps you write belongs to you.</p></details>
+        <details><summary>Does it change my code or send it anywhere?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>It never changes your product code. ReadyGate has no servers of its own: it runs inside Claude Code on your machine, so your code is handled exactly as Claude Code handles it.</p></details>
+        <details><summary>Can I get a refund?<svg aria-hidden="true"><use href="#i-plus"/></svg></summary><p>Yes, within 14 days. See the <a href="/refunds">refund policy</a>. A refund ends the license and repository access.</p></details>
+      </div>
+    </div>
+  </section>
+
   <div class="wrap">
-    <h2>FAQ</h2>
-    <details><summary>What do I need?</summary><p>Claude Code (any paid Claude plan or an API key), git and python3. For screenshots: Claude in Chrome, or Chrome installed.</p></details>
-    <details><summary>How do I get Pro after paying?</summary><p>Your GitHub account is invited to the private <code>readygatedev/readygate-pro</code> repository, usually within a day. Accept the invite, then install with one command in Claude Code.</p></details>
-    <details><summary>Can I use it at work?</summary><p>Yes. The license covers personal and commercial work, for employers and clients. One license per person using it.</p></details>
-    <details><summary>Who owns the tickets it writes?</summary><p>You do, without restriction.</p></details>
-    <details><summary>Does it send my code anywhere?</summary><p>ReadyGate itself has no servers. It runs inside Claude Code on your machine, so your code is handled exactly as Claude Code handles it.</p></details>
-    <details><summary>Something's wrong. Who do I contact?</summary><p><a href="mailto:hello@readygate.dev">hello@readygate.dev</a>.</p></details>
+    <section class="closer">
+      <h2>Write your next ticket with ReadyGate</h2>
+      <p>Try the free plugin on the demo project in five minutes, or get Pro for the full loop.</p>
+      <div class="actions">
+        <a class="btn btn-on btn-lg" href="https://github.com/readygatedev/readygate">Install free</a>
+        <a class="btn btn-line btn-lg" href="#pricing">Get Pro · $49</a>
+      </div>
+    </section>
   </div>
-</section>
 </main>
 
-<footer class="site">
+<footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Ayoub Ben Thabet · ReadyGate · <a href="mailto:hello@readygate.dev">hello@readygate.dev</a></span>
-    <span><a href="/terms">Terms</a> · <a href="/refunds">Refunds</a> · <a href="/privacy">Privacy</a></span>
+    <div>
+      <a class="brand" href="/"><img src="icon.png" alt="">ReadyGate</a>
+      <p>© 2026 Ayoub Ben Thabet · <a href="mailto:hello@readygate.dev">hello@readygate.dev</a></p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="https://github.com/readygatedev/readygate">GitHub</a>
+      <a href="/terms">Terms</a>
+      <a href="/refunds">Refunds</a>
+      <a href="/privacy">Privacy</a>
+    </nav>
   </div>
 </footer>
 
+<script>
+  // Sticky header hairline once the page scrolls.
+  const head = document.querySelector(".site-head");
+  const onScroll = () => head.classList.toggle("scrolled", window.scrollY > 8);
+  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+</script>
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
-  // Filled in once the Paddle product exists. Client-side token and price id are public by design.
   // open: set to true once Paddle has approved readygate.dev for checkout.
   const PADDLE = {
     environment: "production",
@@ -146,6 +342,7 @@
   };
   const buy = document.getElementById("buy");
   const gh = document.getElementById("gh");
+  const ghBox = document.getElementById("gh-box");
   const note = document.getElementById("buy-note");
   const ready = PADDLE.open && PADDLE.token && PADDLE.priceId && window.Paddle;
   if (!ready) {
@@ -157,6 +354,7 @@
       token: PADDLE.token,
       eventCallback: (e) => {
         if (e.name === "checkout.completed") {
+          note.className = "buy-note done";
           note.innerHTML = "Thank you! Your GitHub account has been invited to <b>readygatedev/readygate-pro</b>. " +
             "Accept the invite from your GitHub notifications or email, then install with " +
             "<code>/plugin install readygate-pro --marketplace readygatedev/readygate-pro</code>. " +
@@ -164,11 +362,14 @@
         }
       }
     });
+    gh.addEventListener("input", () => { ghBox.classList.remove("invalid"); note.classList.remove("err"); });
     buy.addEventListener("click", () => {
       const user = gh.value.trim().replace(/^@/, "");
       if (!/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/.test(user)) {
-        gh.focus();
+        ghBox.classList.add("invalid");
+        note.className = "buy-note err";
         note.textContent = "Enter your GitHub username first: Pro is delivered as access to a private GitHub repository.";
+        gh.focus();
         return;
       }
       Paddle.Checkout.open({

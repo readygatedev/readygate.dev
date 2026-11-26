@@ -1,0 +1,41 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-11-26T09:04:07.819Z",
+        "reason": "agent decision: same as Inter, lowercase form reported for index.html"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-26T09:04:07.828Z",
+        "reason": "agent decision: false positives on .window-bar (dots centered in 40px bar) and .faq (border-top on list, summaries padded 20px); verified in captures"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ui\",sans-serif",
+        "createdAt": "2026-11-26T09:12:35.765Z",
+        "reason": "agent decision: detector parses the declared Inter/JetBrains Mono stacks (system-ui, ui-monospace) into fragments; full stacks are declared verbatim in DESIGN.md typography"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "mono\",ui-monospace,monospace",
+        "createdAt": "2026-11-26T09:12:35.770Z",
+        "reason": "agent decision: detector parses the declared Inter/JetBrains Mono stacks (system-ui, ui-monospace) into fragments; full stacks are declared verbatim in DESIGN.md typography"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "mono\",monospace",
+        "createdAt": "2026-11-26T09:12:35.775Z",
+        "reason": "agent decision: detector parses the declared Inter/JetBrains Mono stacks (system-ui, ui-monospace) into fragments; full stacks are declared verbatim in DESIGN.md typography"
+      }
+    ]
+  }
+}
