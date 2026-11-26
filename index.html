@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReadyGate: tickets your developers can build</title>
+<meta name="description" content="ReadyGate is a Claude Code plugin for product managers: grounded fit checks, gated tickets with testable acceptance criteria, and (Pro) push to Jira, Linear or GitHub Issues, prototypes and dev review.">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="icon.png" alt="">ReadyGate</a>
+    <nav class="top">
+      <a href="#how" class="hide-sm">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq" class="hide-sm">FAQ</a>
+      <a href="https://github.com/readygatedev/readygate">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap hero">
+  <h1>Tickets your developers can build, without anyone guessing.</h1>
+  <p class="lede">ReadyGate is a Claude Code plugin for product managers. It reads your real codebase, tells you whether a feature fits, asks the product questions only you can answer, and only then writes tickets: user story, scope, business rules and Given/When/Then acceptance criteria QA can test.</p>
+  <div class="cta">
+    <a class="btn primary" href="#pricing">Get Pro, $49</a>
+    <a class="btn" href="https://github.com/readygatedev/readygate">Start free on GitHub</a>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <h2>Gates, not guesses</h2>
+    <p class="sub">Most AI ticket writers fill gaps with plausible inventions. ReadyGate stops at each gap and hands the decision back to you.</p>
+    <div class="gates">
+      <div class="gate">
+        <h3>Grounded in your code</h3>
+        <p>Every claim about how the product works today cites a <code>file:line</code>. Your product repo stays read-only.</p>
+        <blockquote>Setting a seller to suspended doesn't stop their payouts. Suspended sellers are still being paid today.</blockquote>
+      </div>
+      <div class="gate">
+        <h3>No ticket while a decision is open</h3>
+        <p>One round of product questions, then nothing is written until you say "generate".</p>
+        <blockquote>Your answer creates two decisions I can't make for you…</blockquote>
+      </div>
+      <div class="gate">
+        <h3>Respects past decisions</h3>
+        <p>A decisions file holds your team's standing rules. A feature that breaks one is flagged as blocked, with the reason.</p>
+      </div>
+      <div class="gate">
+        <h3>Testable by QA</h3>
+        <p>3 to 8 acceptance criteria per ticket, each proving a named business rule. Plain business language, no code in the ticket.</p>
+      </div>
+      <div class="gate">
+        <h3>No codebase yet? Fine.</h3>
+        <p>Greenfield mode turns your idea into a brief and an MVP backlog, with open questions split into "Before MVP" and "Can wait".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>Pricing</h2>
+    <p class="sub">The free plugin is the whole ticket-writing workflow. Pro adds the rest of the PM loop, and hooks that enforce the gates.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>ReadyGate</h3>
+        <div class="price">Free <small>MIT license</small></div>
+        <ul>
+          <li><code>/pm-init</code>: detects your repos and sets up the workspace</li>
+          <li><code>/pm-discover</code>: fit check with a clear verdict</li>
+          <li><code>/pm-ticket</code>: gap analysis, questions, then tickets</li>
+          <li><code>/pm-new</code> and <code>/pm-backlog</code> for new products</li>
+        </ul>
+        <a class="btn" href="https://github.com/readygatedev/readygate">Install from GitHub</a>
+      </div>
+      <div class="plan pro">
+        <h3>ReadyGate Pro</h3>
+        <div class="price">$49 <small>one-time, per person</small></div>
+        <ul>
+          <li>Everything in the free plugin</li>
+          <li><code>/pm-push</code>: tickets to <b>Jira, Linear or GitHub Issues</b> after a dry run, with epics, links and screenshots, never pushed twice</li>
+          <li><code>/pm-board</code>: what needs attention, and tickets out of sync with the tracker</li>
+          <li><code>/pm-prototype</code>: mockup, mock-data UI, checked screenshots, ticket-change proposals</li>
+          <li><code>/pm-review</code>: grades what developers shipped, A to D, against each rule</li>
+          <li>Hooks that enforce the gates: read-only product repo, no tickets or tracker writes without your own "go"</li>
+          <li>Updates for 0.x and 1.x</li>
+        </ul>
+        <label class="gh" for="gh">Your GitHub username (Pro is delivered as access to a private repository)</label>
+        <input class="gh" id="gh" name="gh" autocomplete="username" placeholder="octocat" spellcheck="false">
+        <button class="btn primary" id="buy" type="button">Buy Pro, $49</button>
+        <p class="fine" id="buy-note">Secure checkout by Paddle, our reseller, which handles payment, VAT and sales tax. 14-day refund policy: <a href="/refunds">details</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Trackers</h2>
+    <div class="tablewrap">
+      <table>
+        <tr><th>Tracker</th><th>Connection</th><th>Screenshots</th></tr>
+        <tr><td>Jira Cloud</td><td>Atlassian's official MCP server (OAuth)</td><td>Attached automatically</td></tr>
+        <tr><td>Linear</td><td>Linear's official MCP server (OAuth)</td><td>Attached automatically</td></tr>
+        <tr><td>GitHub Issues</td><td>The <code>gh</code> CLI</td><td>Via the browser, or listed for you</td></tr>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:16px">No API tokens are ever written to your files.</p>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="wrap">
+    <h2>FAQ</h2>
+    <details><summary>What do I need?</summary><p>Claude Code (any paid Claude plan or an API key), git and python3. For screenshots: Claude in Chrome, or Chrome installed.</p></details>
+    <details><summary>How do I get Pro after paying?</summary><p>Your GitHub account is invited to the private <code>readygatedev/readygate-pro</code> repository, usually within a day. Accept the invite, then install with one command in Claude Code.</p></details>
+    <details><summary>Can I use it at work?</summary><p>Yes. The license covers personal and commercial work, for employers and clients. One license per person using it.</p></details>
+    <details><summary>Who owns the tickets it writes?</summary><p>You do, without restriction.</p></details>
+    <details><summary>Does it send my code anywhere?</summary><p>ReadyGate itself has no servers. It runs inside Claude Code on your machine, so your code is handled exactly as Claude Code handles it.</p></details>
+    <details><summary>Something's wrong. Who do I contact?</summary><p><a href="mailto:hello@readygate.dev">hello@readygate.dev</a>.</p></details>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Ayoub Ben Thabet · ReadyGate · <a href="mailto:hello@readygate.dev">hello@readygate.dev</a></span>
+    <span><a href="/terms">Terms</a> · <a href="/refunds">Refunds</a> · <a href="/privacy">Privacy</a></span>
+  </div>
+</footer>
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script>
+  // Filled in once the Paddle product exists. Client-side token and price id are public by design.
+  const PADDLE = { environment: "production", token: "", priceId: "" };
+  const buy = document.getElementById("buy");
+  const gh = document.getElementById("gh");
+  const note = document.getElementById("buy-note");
+  const ready = PADDLE.token && PADDLE.priceId && window.Paddle;
+  if (!ready) {
+    buy.disabled = true;
+    buy.textContent = "Checkout opens soon";
+  } else {
+    if (PADDLE.environment === "sandbox") Paddle.Environment.set("sandbox");
+    Paddle.Initialize({ token: PADDLE.token });
+    buy.addEventListener("click", () => {
+      const user = gh.value.trim().replace(/^@/, "");
+      if (!/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38})$/.test(user)) {
+        gh.focus();
+        note.textContent = "Enter your GitHub username first: Pro is delivered as access to a private GitHub repository.";
+        return;
+      }
+      Paddle.Checkout.open({
+        items: [{ priceId: PADDLE.priceId, quantity: 1 }],
+        customData: { github_username: user }
+      });
+    });
+  }
+</script>
+</body>
+</html>
