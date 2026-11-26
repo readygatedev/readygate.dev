@@ -137,11 +137,17 @@
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
   // Filled in once the Paddle product exists. Client-side token and price id are public by design.
-  const PADDLE = { environment: "production", token: "", priceId: "" };
+  // open: set to true once Paddle has approved readygate.dev for checkout.
+  const PADDLE = {
+    environment: "production",
+    token: "live_e735c950df70d296236d301a3ee",
+    priceId: "pri_01m8bfpake21p4tte2fmj8jqe3",
+    open: false
+  };
   const buy = document.getElementById("buy");
   const gh = document.getElementById("gh");
   const note = document.getElementById("buy-note");
-  const ready = PADDLE.token && PADDLE.priceId && window.Paddle;
+  const ready = PADDLE.open && PADDLE.token && PADDLE.priceId && window.Paddle;
   if (!ready) {
     buy.disabled = true;
     buy.textContent = "Checkout opens soon";
