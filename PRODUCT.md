@@ -36,7 +36,7 @@ Used inside Claude Code (terminal or IDE) in a PM workspace next to the product 
 
 ## Brand Commitments
 
-- Name "ReadyGate" and the existing icon (icon.png) are binding. Everything else about the look may change.
+- Name "ReadyGate" and the icon (icon.png, source icon.svg: a tilted ticket, paper body with a mint stub behind a perforation, on the teal tile; chosen 2026-11-27) are binding. Everything else about the look may change.
 - Voice: plain, direct, specific; no hype.
 - Look: the user chose the category standard (familiar modern SaaS landing page), played straight at full craft. Bar to match: Linear (linear.app) and Cal.com (cal.com). Chosen 2026-11-26 over bolder directions.
 
