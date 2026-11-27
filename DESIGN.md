@@ -313,7 +313,7 @@ ReadyGate's site is the category-standard SaaS product page played straight at L
 
 The palette is the icon's. Teal is the brand ink and the primary action; mint is the "ready / checked" signal; warm off-white paper exists only inside product renderings. A single orange state hue marks "decision needed" and "Blocked", the moment ReadyGate refuses to guess. Density is calm: generous 120px section rhythm, centered hero, two-column content grids that collapse to one column under 900px. Light and dark themes are both first-class; dark mode turns the ground deep teal-black and promotes mint to the brand role.
 
-Motion is a single authored moment: the product window settles into place on load. Everything else is instantaneous or a short state transition.
+Motion has one authored moment: the hero product window replays the real session (commands type, replies land, the decision gate closes and holds, then the ticket writes itself and is stamped Ready for dev), with a Replay control. The only supporting motion is a one-time highlight sweep over file:line citations in the gates section. Everything else is instantaneous or a short state transition.
 
 **Key Characteristics:**
 - Near-white neutral ground, deep teal as the only brand ink, mint as the ready signal.
@@ -321,7 +321,7 @@ Motion is a single authored moment: the product window settles into place on loa
 - Hairline 1px borders plus soft, low-contrast offset shadows; 10-16px radii.
 - Inter for everything readable, JetBrains Mono only for real commands, paths and `file:line` references.
 - One orange state hue, reserved for "decision needed" and "Blocked".
-- One entrance animation (the window settle), transform-only, off under reduced motion.
+- One authored sequence (the hero session replay, ~6s, one-shot, starting once the decision gate is on screen), transform/opacity/clip-path only, fully static under reduced motion; content is visible without JavaScript.
 
 ## Colors
 
@@ -451,7 +451,8 @@ Full-width teal band, 20px radius, centered headline and copy at 84% white, on-b
 - **Do** use teal for every primary action and link, and swap the brand role to mint in dark mode.
 - **Do** pair every raised surface with a 1px hairline before adding the Resting or Lifted shadow.
 - **Do** reserve hold orange for "decision needed" and "Blocked" states and their form-validation echo.
-- **Do** keep the window settle (1.1s, cubic-bezier(.16, 1, .3, 1), transform only) as the single entrance animation, disabled under prefers-reduced-motion.
+- **Do** keep the hero sequence as the single authored moment: window settle (1.1s), then lines in transcript order with cubic-bezier(.16, 1, .3, 1); commands type with clip-path steps, the gate holds ~0.45s, the ticket writes left-to-right only after `generate` (never before the decisions), the tag stamps last. Disabled under prefers-reduced-motion, and the Replay control stays hidden there.
+- **Don't** add scroll reveals or staggered section entrances; the citation sweep in the gates section is the only scroll-triggered effect.
 - **Do** collapse every grid to one column at 900px and keep 16px gutters on phones.
 
 ### Don't:
